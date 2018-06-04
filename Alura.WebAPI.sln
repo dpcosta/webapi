@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.WebAPI.Model", "Alura.WebAPI.Model\Alura.WebAPI.Model.csproj", "{492C972C-38DD-4C4F-B3C3-C9A62898E406}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.WebAPI.WebApp", "Alura.WebAPI.WebApp\Alura.WebAPI.WebApp.csproj", "{3EA2D4E0-1B65-4B65-8A66-1EEAE9063F81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{492C972C-38DD-4C4F-B3C3-C9A62898E406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492C972C-38DD-4C4F-B3C3-C9A62898E406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492C972C-38DD-4C4F-B3C3-C9A62898E406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492C972C-38DD-4C4F-B3C3-C9A62898E406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA2D4E0-1B65-4B65-8A66-1EEAE9063F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA2D4E0-1B65-4B65-8A66-1EEAE9063F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA2D4E0-1B65-4B65-8A66-1EEAE9063F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA2D4E0-1B65-4B65-8A66-1EEAE9063F81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27AF3585-B804-4D4A-9C5B-5667BF413334}
+	EndGlobalSection
+EndGlobal

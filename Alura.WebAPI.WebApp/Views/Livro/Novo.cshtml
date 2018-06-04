@@ -1,0 +1,75 @@
+﻿@model Livro
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Novo Livro</h2>
+
+<main>
+
+    <form class="row" asp-action="Novo" method="post">
+
+        <div class="col-5 text-center">
+            <div class="capa">
+                <img class="img-fluid" src="~/images/capa-vazia.png" alt="Clique para incluir a capa">
+            </div>
+        </div>
+
+        <div class="col-5">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Subtitulo" class="control-label"></label>
+                <input asp-for="Subtitulo" class="form-control" />
+                <span asp-validation-for="Subtitulo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Resumo" class="control-label"></label>
+                <textarea asp-for="Resumo" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Resumo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label"></label>
+                <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Capa" class="control-label"></label>
+                <select asp-for="Capa" class="form-control">
+                    @foreach (string capa in (IEnumerable<string>)ViewData["Capas"])
+                    {
+                        <option value="@capa">@capa</option>
+                    }
+                </select>
+                <span asp-validation-for="Capa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Lista" class="control-label"></label>
+                <select asp-for="Lista" class="form-control">
+                    @foreach (var tipo in Enum.GetValues(typeof(TipoListaLeitura)))
+                    {
+                        <option value="@tipo">@tipo</option>
+                    }
+                </select>
+                <span asp-validation-for="Capa" class="text-danger"></span>
+            </div>
+
+            <footer class="form-group">
+                <button class="btn btn-primary">GRAVAR</button>
+            </footer>
+        </div>
+
+    </form>
+
+</main>

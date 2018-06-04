@@ -1,0 +1,10 @@
+﻿@model Livro
+
+<li class="list-group-item my-3 mx-5 border-0">
+    <a asp-action="Detalhes" asp-controller="Livro" asp-route-id="@Model.Id">
+        @{ 
+            var capa = Model.Capa ?? "capa-vazia.png";
+        }
+        <img class="livro img-fluid" src="~/images/capas/@capa" alt="@Model.Titulo" data-id="@Model.Id">
+    </a>
+</li>
