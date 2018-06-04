@@ -35,5 +35,12 @@ namespace Alura.WebAPI.WebApp.Controllers
             };
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult ListaLeitura(TipoListaLeitura tipo)
+        {
+            var lista = ListaDoTipo(tipo);
+            return Ok(lista);
+        }
     }
 }
