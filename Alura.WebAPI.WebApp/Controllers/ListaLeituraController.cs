@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alura.WebAPI.WebApp.Controllers
 {
+    [Route("[controller]")]
     public class ListaLeituraController : Controller
     {
         private readonly IRepository<Livro> _repo;
@@ -25,21 +26,10 @@ namespace Alura.WebAPI.WebApp.Controllers
                 .ToList();
         }
 
-        public IActionResult ParaLer()
+        [HttpGet("{tipo}")]
+        public IActionResult Get(TipoListaLeitura tipo)
         {
-            var lista = LivrosDoTipo(TipoListaLeitura.ParaLer);
-            return Ok(lista);
-        }
-
-        public IActionResult Lidos()
-        {
-            var lista = LivrosDoTipo(TipoListaLeitura.Lidos);
-            return Ok(lista);
-        }
-
-        public IActionResult Lendo()
-        {
-            var lista = LivrosDoTipo(TipoListaLeitura.Lendo);
+            var lista = LivrosDoTipo(tipo);
             return Ok(lista);
         }
     }
