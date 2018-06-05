@@ -21,11 +21,20 @@ namespace Alura.WebAPI.WebApp.Controllers
             _repo = repository;
         }
 
-        private IEnumerable<Livro> LivrosDoTipo(TipoListaLeitura tipo)
+        private IEnumerable<LivroApiViewModel> LivrosDoTipo(TipoListaLeitura tipo)
         {
             return _repo
                 .All
                 .Where(l => l.Lista == tipo)
+                .Select(l => new LivroApiViewModel {
+                    Id = l.Id,
+                    Titulo = l.Titulo,
+                    Subtitulo = l.Subtitulo,
+                    Resumo = l.Resumo,
+                    Autor = l.Autor,
+                    Capa = $"/Livro/ImagemCapa/{l.Id}",
+                    Lista = l.Lista.ParaString()
+                })
                 .ToList();
         }
 
