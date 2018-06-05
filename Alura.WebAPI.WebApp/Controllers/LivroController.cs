@@ -12,12 +12,10 @@ namespace Alura.WebAPI.WebApp.Controllers
     public class LivroController : Controller
     {
         private readonly IRepository<Livro> _repo;
-        private readonly IHostingEnvironment _environment;
 
-        public LivroController(IRepository<Livro> repository, IHostingEnvironment environment)
+        public LivroController(IRepository<Livro> repository)
         {
             _repo = repository;
-            _environment = environment;
         }
 
         [HttpGet]
