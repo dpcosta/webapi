@@ -26,8 +26,7 @@ namespace Alura.WebAPI.WebApp.Data
                 .HasColumnType("nvarchar(75)");
 
             builder
-                .Property(l => l.Capa)
-                .HasColumnType("nvarchar(255)");
+                .Property(l => l.ImagemCapa);
 
             builder
                 .Property(l => l.Lista)

@@ -33,7 +33,7 @@ namespace Alura.WebAPI.WebApp.Controllers
         {
             return new ListaLeitura
             {
-                Tipo = tipo,
+                Tipo = tipo.ParaString(),
                 Livros = LivrosDoTipo(tipo)
             };
         }
@@ -52,7 +52,7 @@ namespace Alura.WebAPI.WebApp.Controllers
         {
             var lista = new ListaLeitura
             {
-                Tipo = tipo,
+                Tipo = tipo.ParaString(),
                 Livros = LivrosDoTipo(tipo)
             };
             return Ok(lista);

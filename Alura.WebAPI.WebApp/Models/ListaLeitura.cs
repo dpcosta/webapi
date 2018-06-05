@@ -8,7 +8,7 @@ namespace Alura.WebAPI.WebApp.Models
 {
     public class ListaLeitura
     {
-        public TipoListaLeitura Tipo { get; set; }
+        public string Tipo { get; set; }
         public IEnumerable<Livro> Livros { get; set; }
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Alura.WebAPI.Model;
 using Alura.WebAPI.WebApp.Data;
+using Alura.WebAPI.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,61 +20,56 @@ namespace Alura.WebAPI.WebApp.Controllers
             _environment = environment;
         }
 
-        private IEnumerable<string> Capas
-        {
-            get
-            {
-                var diretorio = Path.Combine(_environment.WebRootPath, "images/capas");
-                var dirInfo = new DirectoryInfo(diretorio);
-                var lista = new List<string>();
-                foreach (var capa in dirInfo.GetFiles())
-                {
-                    lista.Add(capa.Name);
-                }
-                return lista;
-            }
-        }
-
         [HttpGet]
         public IActionResult Novo()
         {
-            ViewData["Capas"] = this.Capas;
-            return View();
+            return View(new LivroViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Novo(Livro model)
+        public IActionResult Novo(LivroViewModel model)
         {
-            ViewData["Capas"] = this.Capas;
             if (ModelState.IsValid)
             {
-                _repo.Incluir(model);
+                _repo.Incluir(model.ToLivro());
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
 
         [HttpGet]
+        public IActionResult ImagemCapa(int id)
+        {
+            byte[] img = _repo.All
+                .Where(l => l.Id == id)
+                .Select(l => l.ImagemCapa)
+                .FirstOrDefault();
+            if (img != null)
+            {
+                return File(img, "image/png");
+            }
+            return File("~/images/capas/capa-vazia.png", "image/png");
+        }
+
+        [HttpGet]
         public IActionResult Detalhes(int id)
         {
-            ViewData["Capas"] = this.Capas;
-            var model = _repo.Find(id);
-            if (model == null)
+            var livro = _repo.Find(id);
+            if (livro == null)
             {
                 return NotFound();
             }
-            return View(model);
+            return View(livro.ToModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Detalhes(Livro model)
+        public IActionResult Detalhes(LivroViewModel model)
         {
-            ViewData["Capas"] = this.Capas;
             if (ModelState.IsValid)
             {
-                _repo.Alterar(model);
+                _repo.Alterar(model.ToLivro());
                 return RedirectToAction("Index", "Home");
             }
             return View(model);

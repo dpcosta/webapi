@@ -12,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alura.WebAPI.WebApp.Migrations
 {
     [DbContext(typeof(LeituraContext))]
-    partial class LeituraContextModelSnapshot : ModelSnapshot
+    [Migration("20180605175748_CapaEmBytes")]
+    partial class CapaEmBytes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
