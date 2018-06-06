@@ -3,7 +3,6 @@ using Alura.WebAPI.Model;
 using Alura.WebAPI.WebApp.Data;
 using Alura.WebAPI.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alura.WebAPI.WebApp.Controllers

@@ -1,5 +1,7 @@
 ﻿using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 
@@ -28,6 +30,20 @@ namespace Alura.WebAPI.WebApp.Models
                 Resumo = livro.Resumo,
                 Autor = livro.Autor,
                 Lista = livro.Lista
+            };
+        }
+
+        public static LivroApiViewModel ToApi(this Livro livro)
+        {
+            return new LivroApiViewModel
+            {
+                Id = livro.Id,
+                Titulo = livro.Titulo,
+                Subtitulo = livro.Subtitulo,
+                Resumo = livro.Resumo,
+                Autor = livro.Autor,
+                Capa = $"/api/capas/{livro.Id}", 
+                Lista = livro.Lista.ParaString()
             };
         }
 

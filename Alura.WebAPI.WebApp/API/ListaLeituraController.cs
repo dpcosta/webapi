@@ -8,10 +8,10 @@ using Alura.WebAPI.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alura.WebAPI.WebApp.Controllers
+namespace Alura.WebAPI.WebApp.API
 {
     [Authorize]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ListaLeituraController : Controller
     {
         private readonly IRepository<Livro> _repo;
@@ -26,15 +26,7 @@ namespace Alura.WebAPI.WebApp.Controllers
             return _repo
                 .All
                 .Where(l => l.Lista == tipo)
-                .Select(l => new LivroApiViewModel {
-                    Id = l.Id,
-                    Titulo = l.Titulo,
-                    Subtitulo = l.Subtitulo,
-                    Resumo = l.Resumo,
-                    Autor = l.Autor,
-                    Capa = $"/Livro/ImagemCapa/{l.Id}",
-                    Lista = l.Lista.ParaString()
-                })
+                .Select(l => l.ToApi())
                 .ToList();
         }
 
