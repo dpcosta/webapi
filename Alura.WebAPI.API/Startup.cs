@@ -1,43 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alura.WebAPI.AuthProvider.Data;
+using Alura.WebAPI.API.Data;
+using Alura.WebAPI.API.Models;
 using Alura.WebAPI.AuthProvider.Models;
+using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Alura.WebAPI.AuthProvider
+namespace Alura.WebAPI.API
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration config)
         {
-            Configuration = configuration;
+            Configuration = config;
         }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //injetando o contexto do entity
-            services.AddDbContext<AuthDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            services.AddDbContext<LeituraContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("ListaLeitura"))
             );
 
-            services
-                .AddIdentity<Usuario, IdentityRole>()
-                .AddEntityFrameworkStores<AuthDbContext>();
+            //injetando o repositório de livros (transiente = sempre que necessário)
+            services.AddTransient<IRepository<Livro>, RepositorioBaseEF<Livro>>();
 
             var signingConfigurations = new SigningConfigurations();
             services.AddSingleton(signingConfigurations);
@@ -48,17 +44,21 @@ namespace Alura.WebAPI.AuthProvider
                     .Configure(tokenConfigurations);
             services.AddSingleton(tokenConfigurations);
 
-
             services.AddAuthentication(authOptions =>
             {
                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(bearerOptions =>
             {
+                bearerOptions.Audience = tokenConfigurations.Audience;
+                //bearerOptions.AutomaticAuthenticate = true;
+
                 var paramsValidation = bearerOptions.TokenValidationParameters;
                 paramsValidation.IssuerSigningKey = signingConfigurations.Key;
                 paramsValidation.ValidAudience = tokenConfigurations.Audience;
                 paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+                //bearerOptions.Authority = "http://localhost:5000";
+                //bearerOptions.RequireHttpsMetadata = false;
 
                 // Valida a assinatura de um token recebido
                 paramsValidation.ValidateIssuerSigningKey = true;
@@ -76,17 +76,19 @@ namespace Alura.WebAPI.AuthProvider
             // a recursos deste projeto
             services.AddAuthorization(auth =>
             {
-                auth.AddPolicy(
-                    "Bearer", 
-                    new AuthorizationPolicyBuilder()
-                        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-                        .RequireAuthenticatedUser()
-                        .Build()
-                );
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build());
             });
 
-            services.AddMvc();
-
+            services.AddMvc(options => {
+                //impede que o cliente envie media types diferentes do aceitável
+                //exemplo: text/css irá retornar 406
+                options.ReturnHttpNotAcceptable = true;
+                //adiciona a opção de serializar a resposta em XML
+                options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+                //e se eu quisesse serializar em um formato novo? Ex. CSV
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,6 +98,10 @@ namespace Alura.WebAPI.AuthProvider
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.WebAPI.WebApp", "Alur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.WebAPI.AuthProvider", "Alura.WebAPI.AuthProvider\Alura.WebAPI.AuthProvider.csproj", "{793300DF-1F62-4A58-BB4B-7FDD7EF9634E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.WebAPI.API", "Alura.WebAPI.API\Alura.WebAPI.API.csproj", "{D81D7845-2C25-4FC3-A17B-365D7BD26967}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{793300DF-1F62-4A58-BB4B-7FDD7EF9634E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{793300DF-1F62-4A58-BB4B-7FDD7EF9634E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{793300DF-1F62-4A58-BB4B-7FDD7EF9634E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81D7845-2C25-4FC3-A17B-365D7BD26967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81D7845-2C25-4FC3-A17B-365D7BD26967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81D7845-2C25-4FC3-A17B-365D7BD26967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81D7845-2C25-4FC3-A17B-365D7BD26967}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,11 +6,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.AuthProvider.Models
+namespace Alura.WebAPI.API.Models
 {
     public class SigningConfigurations
     {
-        private readonly string secret = "mysupersecret_secretkey!123"; 
+        private readonly string secret = "mysupersecret_secretkey!123";
         public SecurityKey Key { get; }
         public SigningCredentials SigningCredentials { get; }
 
