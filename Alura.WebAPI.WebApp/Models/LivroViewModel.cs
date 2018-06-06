@@ -1,9 +1,8 @@
 ﻿using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace Alura.WebAPI.WebApp.Models
 {
@@ -74,6 +73,7 @@ namespace Alura.WebAPI.WebApp.Models
         public TipoListaLeitura Lista { get; set; }
     }
 
+    [XmlType("Livro")]
     public class LivroApiViewModel
     {
         public int Id { get; set; }
