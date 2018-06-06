@@ -10,9 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alura.WebAPI.WebApp.API
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
-    [FormatFilter]
     public class LivrosController : Controller
     {
         private readonly IRepository<Livro> _repo;
@@ -31,7 +30,7 @@ namespace Alura.WebAPI.WebApp.API
             return Ok(livros);
         }
 
-        [HttpGet("{id}.{format?}")]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var livro = _repo.Find(id);
