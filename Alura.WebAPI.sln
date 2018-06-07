@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.WebAPI.AuthProvider",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.WebAPI.API", "Alura.WebAPI.API\Alura.WebAPI.API.csproj", "{D81D7845-2C25-4FC3-A17B-365D7BD26967}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Common", "0-Common", "{58B6C847-CC64-4D78-B854-57E826A5BE62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Services", "1-Services", "{AD64A2D5-F033-40E0-9C69-E38B3F195791}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Apps", "2-Apps", "{04192D6B-5E39-46C6-A7AB-1B79360192CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +42,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{492C972C-38DD-4C4F-B3C3-C9A62898E406} = {58B6C847-CC64-4D78-B854-57E826A5BE62}
+		{3EA2D4E0-1B65-4B65-8A66-1EEAE9063F81} = {04192D6B-5E39-46C6-A7AB-1B79360192CE}
+		{793300DF-1F62-4A58-BB4B-7FDD7EF9634E} = {AD64A2D5-F033-40E0-9C69-E38B3F195791}
+		{D81D7845-2C25-4FC3-A17B-365D7BD26967} = {AD64A2D5-F033-40E0-9C69-E38B3F195791}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27AF3585-B804-4D4A-9C5B-5667BF413334}
