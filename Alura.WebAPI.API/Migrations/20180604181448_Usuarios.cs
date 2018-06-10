@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Alura.WebAPI.WebApp.Migrations
+namespace Alura.WebAPI.API.Migrations
 {
     public partial class Usuarios : Migration
     {

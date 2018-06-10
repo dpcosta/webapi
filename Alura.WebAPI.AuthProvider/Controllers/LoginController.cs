@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Alura.WebAPI.AuthProvider.Models;
+using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +34,7 @@ namespace Alura.WebAPI.AuthProvider.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Post(LoginViewModel model)
+        public async Task<IActionResult> Post([FromBody] LoginModel model)
         {
             if (ModelState.IsValid)
             {

@@ -11,6 +11,10 @@ namespace Alura.WebAPI.WebApp.Models
     {
         public static byte[] ConvertToBytes(IFormFile image)
         {
+            if (image == null)
+            {
+                return null;
+            }
             using (var inputStream = image.OpenReadStream())
             using (var stream = new MemoryStream())
             {

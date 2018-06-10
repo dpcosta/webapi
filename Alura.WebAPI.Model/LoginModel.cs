@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Alura.WebAPI.WebApp.Models
+namespace Alura.WebAPI.Model
 {
-    public class LoginViewModel
+    public class LoginModel
     {
         [Required]
         [Display(Name = "Usuário")]

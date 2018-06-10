@@ -1,10 +1,9 @@
-﻿using Alura.WebAPI.Model;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Alura.WebAPI.API.Models
+namespace Alura.WebAPI.Model
 {
     public static class LivroApiExtensions
     {

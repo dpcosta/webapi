@@ -1,8 +1,12 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using Alura.WebAPI.API.Data;
 using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Alura.WebAPI.API.Controllers
 {
@@ -11,10 +15,26 @@ namespace Alura.WebAPI.API.Controllers
     public class CapasController : Controller
     {
         private readonly IRepository<Livro> _repo;
+        private readonly ILogger _logger;
 
-        public CapasController(IRepository<Livro> repositorio)
+        public CapasController(IRepository<Livro> repositorio, ILogger<CapasController> logger)
         {
             _repo = repositorio;
+            _logger = logger;
+        }
+
+        private byte[] ConvertToBytes(IFormFile file)
+        {
+            if (file == null)
+            {
+                return null;
+            }
+            using (var inputStream = file.OpenReadStream())
+            using (var stream = new MemoryStream())
+            {
+                inputStream.CopyTo(stream);
+                return stream.ToArray();
+            }
         }
 
         [HttpGet("{livroId}")]

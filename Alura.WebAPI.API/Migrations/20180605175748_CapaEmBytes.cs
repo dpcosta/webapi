@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Alura.WebAPI.WebApp.Migrations
+namespace Alura.WebAPI.API.Migrations
 {
     public partial class CapaEmBytes : Migration
     {

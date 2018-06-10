@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Alura.WebAPI.WebApp.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Alura.WebAPI.WebApp.Data;
-using Alura.WebAPI.Model;
-using Alura.WebAPI.WebApp.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using System;
 
 namespace Alura.WebAPI.WebApp
 {
@@ -24,29 +23,15 @@ namespace Alura.WebAPI.WebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //injetando o contexto do entity
-            services.AddDbContext<LeituraContext>( options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ListaLeitura"))
-            );
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services
-                .AddIdentity<Usuario, IdentityRole>(
-                options =>
-                {
-                    //para facilitar a criação de um usuário com senha fraca
-                    options.Password.RequiredLength = 3;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = false;
-                    options.Password.RequireLowercase = false;
-                })
-                .AddEntityFrameworkStores<LeituraContext>();
-
-            services.ConfigureApplicationCookie(
-                //configurando a página de autenticação qdo requisição for anônima
-                options => options.LoginPath = "/Usuario/Login");
-
-            //injetando o repositório de livros (transiente = sempre que necessário)
-            services.AddTransient<IRepository<Livro>, RepositorioBaseEF<Livro>>();
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    //configurando a página de autenticação qdo requisição for anônima
+                    options.LoginPath = "/Usuario/Login";
+                    options.ExpireTimeSpan = TimeSpan.FromSeconds(600);
+                });
 
             services.AddMvc(options => {
                 //impede que o cliente envie media types diferentes do aceitável
@@ -56,6 +41,22 @@ namespace Alura.WebAPI.WebApp
                 options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
                 //e se eu quisesse serializar em um formato novo? Ex. CSV
             });
+
+            services.AddHttpClient<ListaLeituraService>(c => {
+                c.BaseAddress = new System.Uri(Configuration["Services:ApiBaseAddress"]);
+                c.DefaultRequestHeaders.Add("User-Agent", "Alura.WebAPI.WebApp");
+            });
+
+            services.AddHttpClient<ListaLeituraAuthService>(c => {
+                c.BaseAddress = new System.Uri(Configuration["Services:AuthProviderBaseAddress"]);
+                c.DefaultRequestHeaders.Add("User-Agent", "Alura.WebAPI.WebApp");
+            });
+
+            services.AddHttpClient<LivrosService>(c => {
+                c.BaseAddress = new System.Uri(Configuration["Services:ApiBaseAddress"]);
+                c.DefaultRequestHeaders.Add("User-Agent", "Alura.WebAPI.WebApp");
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,46 +1,37 @@
 ﻿using Alura.WebAPI.Model;
-using Alura.WebAPI.WebApp.Data;
 using Alura.WebAPI.WebApp.Models;
+using Alura.WebAPI.WebApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Alura.WebAPI.WebApp.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly IRepository<Livro> _repo;
+        private readonly ListaLeituraService _service;
 
-        public HomeController(IRepository<Livro> repo)
+        public HomeController(ListaLeituraService service)
         {
-            _repo = repo;
+            _service = service;
         }
 
-        private IEnumerable<Livro> ListaDoTipo(TipoListaLeitura tipo)
+        private async Task<IEnumerable<LivroApi>> ListaDoTipo(TipoListaLeitura tipo)
         {
-            return _repo.All
-                .Where(l => l.Lista == tipo)
-                .ToList();
+            return await _service.GetListaAsync(tipo);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var model = new HomeViewModel
             {
-                ParaLer = ListaDoTipo(TipoListaLeitura.ParaLer),
-                Lendo = ListaDoTipo(TipoListaLeitura.Lendo),
-                Lidos = ListaDoTipo(TipoListaLeitura.Lidos)
+                ParaLer = await ListaDoTipo(TipoListaLeitura.ParaLer),
+                Lendo = await ListaDoTipo(TipoListaLeitura.Lendo),
+                Lidos = await ListaDoTipo(TipoListaLeitura.Lidos)
             };
             return View(model);
-        }
-
-        [HttpGet]
-        public IActionResult ListaLeitura(TipoListaLeitura tipo)
-        {
-            var lista = ListaDoTipo(tipo);
-            return Ok(lista);
         }
     }
 }

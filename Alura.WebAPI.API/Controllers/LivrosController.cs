@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using Alura.WebAPI.API.Data;
 using Alura.WebAPI.API.Models;
 using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alura.WebAPI.WebApp.API
@@ -16,6 +18,20 @@ namespace Alura.WebAPI.WebApp.API
         public LivrosController(IRepository<Livro> repositorio)
         {
             _repo = repositorio;
+        }
+
+        private byte[] ConvertToBytes(IFormFile file)
+        {
+            if (file == null)
+            {
+                return null;
+            }
+            using (var inputStream = file.OpenReadStream())
+            using (var stream = new MemoryStream())
+            {
+                inputStream.CopyTo(stream);
+                return stream.ToArray();
+            }
         }
 
         [HttpGet()]
@@ -39,7 +55,7 @@ namespace Alura.WebAPI.WebApp.API
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] LivroCapaAsMultipartData model)
+        public IActionResult Post([FromForm] LivroCapaAsMultipartData model)
         {
             if (ModelState.IsValid)
             {
@@ -52,11 +68,20 @@ namespace Alura.WebAPI.WebApp.API
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] LivroCapaAsMultipartData model)
+        public IActionResult Put([FromForm] LivroCapaAsMultipartData model)
         {
             if (ModelState.IsValid)
             {
-                var livro = model.ToLivro();
+                var livro = _repo.Find(model.Id);
+                livro.Titulo = model.Titulo;
+                livro.Subtitulo = model.Subtitulo;
+                livro.Resumo = model.Resumo;
+                livro.Autor = model.Autor;
+                livro.Lista = model.Lista;
+                if (model.Capa != null)
+                {
+                    livro.ImagemCapa = ConvertToBytes(model.Capa);
+                }
                 _repo.Alterar(livro);
                 return Ok();
             }
