@@ -1,31 +1,32 @@
 ﻿using Alura.WebAPI.Model;
-using Microsoft.AspNetCore.Http;
+using Alura.WebAPI.Seguranca;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.WebApp.Services
+namespace Alura.WebAPI.Services
 {
     public class ListaLeituraService
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly HttpClient _httpClient;
-        private string _token => _httpContextAccessor.HttpContext
-            .User.Claims.FirstOrDefault(c => c.Type == "Token").Value;
+        private readonly string _token;
 
-        public ListaLeituraService(HttpClient client, IHttpContextAccessor httpContextAccessor)
+        public ListaLeituraService(HttpClient client, ITokenFactory factory)
         {
-            _httpContextAccessor = httpContextAccessor;
             _httpClient = client;
+            _token = factory.Token;
+        }
+
+        private void AddBearerToken()
+        {
+            var authHeader = new AuthenticationHeaderValue("Bearer", _token);
+            _httpClient.DefaultRequestHeaders.Authorization = authHeader;
         }
 
         public async Task<IEnumerable<LivroApi>> GetListaAsync(TipoListaLeitura tipo)
         {
-            _httpClient.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue("Bearer", _token);
+            AddBearerToken();
             var response = await _httpClient.GetAsync($"listaleitura/{tipo}");
             //if (response.StatusCode == HttpStatusCode.Unauthorized)
             //{

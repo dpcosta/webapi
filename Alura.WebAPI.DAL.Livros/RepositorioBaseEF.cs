@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Alura.WebAPI.API.Data
+namespace Alura.WebAPI.DAL.Livros
 {
     public class RepositorioBaseEF<TEntity>: IRepository<TEntity> where TEntity: class
     {

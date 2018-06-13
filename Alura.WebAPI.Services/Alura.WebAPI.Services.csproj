@@ -1,18 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Alura.WebAPI.Model\Alura.WebAPI.Model.csproj" />
     <ProjectReference Include="..\Alura.WebAPI.Seguranca\Alura.WebAPI.Seguranca.csproj" />
-    <ProjectReference Include="..\Alura.WebAPI.Services\Alura.WebAPI.Services.csproj" />
   </ItemGroup>
 
 </Project>

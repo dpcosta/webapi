@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Alura.WebAPI.AuthProvider.Data
+namespace Alura.WebAPI.DAL.Usuarios
 {
     internal class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
     {

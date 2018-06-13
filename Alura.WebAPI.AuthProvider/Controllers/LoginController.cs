@@ -5,6 +5,7 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using Alura.WebAPI.AuthProvider.Models;
 using Alura.WebAPI.Model;
+using Alura.WebAPI.Seguranca;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.API.Data
+namespace Alura.WebAPI.DAL.Livros
 {
     public interface IRepository<TEntity> where TEntity : class
     {

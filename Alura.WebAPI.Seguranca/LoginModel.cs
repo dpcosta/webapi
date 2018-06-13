@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Alura.WebAPI.Model
+namespace Alura.WebAPI.Seguranca
 {
     public class LoginModel
     {

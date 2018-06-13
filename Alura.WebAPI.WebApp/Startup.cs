@@ -1,4 +1,4 @@
-﻿using Alura.WebAPI.WebApp.Services;
+﻿using Alura.WebAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using System;
+using Alura.WebAPI.Seguranca;
+using Alura.WebAPI.WebApp.Seguranca;
 
 namespace Alura.WebAPI.WebApp
 {
@@ -24,6 +26,7 @@ namespace Alura.WebAPI.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<ITokenFactory, TokenViaHttpContext>();
 
             services
                 .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

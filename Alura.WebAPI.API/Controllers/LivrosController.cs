@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
-using Alura.WebAPI.API.Data;
-using Alura.WebAPI.API.Models;
+using Alura.WebAPI.DAL.Livros;
 using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -55,7 +54,7 @@ namespace Alura.WebAPI.WebApp.API
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] LivroCapaAsMultipartData model)
+        public IActionResult Post([FromForm] LivroUpload model)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +67,7 @@ namespace Alura.WebAPI.WebApp.API
         }
 
         [HttpPut]
-        public IActionResult Put([FromForm] LivroCapaAsMultipartData model)
+        public IActionResult Put([FromForm] LivroUpload model)
         {
             if (ModelState.IsValid)
             {

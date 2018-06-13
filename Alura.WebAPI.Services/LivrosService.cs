@@ -1,36 +1,28 @@
 ﻿using Alura.WebAPI.Model;
-using Microsoft.AspNetCore.Http;
+using Alura.WebAPI.Seguranca;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.WebApp.Services
+namespace Alura.WebAPI.Services
 {
     public class LivrosService
     {
         private readonly HttpClient _httpClient;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly string _token;
 
-        public LivrosService(HttpClient client, IHttpContextAccessor httpContextAccessor)
+        public LivrosService(HttpClient client, ITokenFactory factory)
         {
             _httpClient = client;
-            _httpContextAccessor = httpContextAccessor;
+            _token = factory.Token;
         }
 
         private void AddBearerToken()
         {
-            var tokenClaim = _httpContextAccessor.HttpContext.User
-                .Claims.FirstOrDefault(c => c.Type == "Token");
-            if (tokenClaim != null)
-            {
-                var authHeader = new AuthenticationHeaderValue("Bearer", tokenClaim.Value);
-                _httpClient.DefaultRequestHeaders.Authorization = authHeader;
-                return;
-            }
-            throw new SystemException(); //ver oq fazer aqui!
+            var authHeader = new AuthenticationHeaderValue("Bearer", _token);
+            _httpClient.DefaultRequestHeaders.Authorization = authHeader;
         }
 
         private MultipartFormDataContent CreateLivroContent(Livro livro)

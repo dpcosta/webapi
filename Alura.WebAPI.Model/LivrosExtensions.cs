@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Xml.Serialization;
+﻿using System.IO;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Alura.WebAPI.Model
 {
-    public static class LivroApiExtensions
+    public static class LivrosExtensions
     {
-        public static byte[] ConvertToBytes(IFormFile image)
+        public static byte[] ConvertToBytes(this IFormFile image)
         {
             if (image == null)
             {
@@ -21,7 +22,7 @@ namespace Alura.WebAPI.Model
             }
         }
 
-        public static Livro ToLivro(this LivroCapaAsMultipartData model)
+        public static Livro ToLivro(this LivroUpload model)
         {
             return new Livro
             {
@@ -30,7 +31,7 @@ namespace Alura.WebAPI.Model
                 Subtitulo = model.Subtitulo,
                 Resumo = model.Resumo,
                 Autor = model.Autor,
-                ImagemCapa = ConvertToBytes(model.Capa),
+                ImagemCapa = model.Capa.ConvertToBytes(),
                 Lista = model.Lista
             };
         }
@@ -48,29 +49,5 @@ namespace Alura.WebAPI.Model
                 Lista = livro.Lista.ParaString()
             };
         }
-    }
-
-    [XmlType("Livro")]
-    public class LivroApi
-    {
-        public int Id { get; set; }
-        public string Titulo { get; set; }
-        public string Subtitulo { get; set; }
-        public string Autor { get; set; }
-        public string Resumo { get; set; }
-        public string Capa { get; set; }
-        public string Lista { get; set; }
-    }
-
-    public class LivroCapaAsMultipartData
-    {
-        public int Id { get; set; }
-        [Required]
-        public string Titulo { get; set; }
-        public string Subtitulo { get; set; }
-        public string Autor { get; set; }
-        public string Resumo { get; set; }
-        public IFormFile Capa { get; set; }
-        public TipoListaLeitura Lista { get; set; }
     }
 }

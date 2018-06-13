@@ -1,6 +1,6 @@
 ﻿using Alura.WebAPI.Model;
 using Alura.WebAPI.WebApp.Models;
-using Alura.WebAPI.WebApp.Services;
+using Alura.WebAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

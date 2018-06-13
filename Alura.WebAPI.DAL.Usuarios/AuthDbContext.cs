@@ -1,12 +1,8 @@
 ﻿using Alura.WebAPI.AuthProvider.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Alura.WebAPI.AuthProvider.Data
+namespace Alura.WebAPI.DAL.Usuarios
 {
     public class AuthDbContext : IdentityDbContext<Usuario>
     {

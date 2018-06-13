@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Alura.WebAPI.API.Data;
-using Alura.WebAPI.API.Models;
+using Alura.WebAPI.DAL.Livros;
 using Alura.WebAPI.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

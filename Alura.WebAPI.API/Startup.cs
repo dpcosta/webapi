@@ -1,8 +1,7 @@
 ﻿using System;
-using Alura.WebAPI.API.Data;
-using Alura.WebAPI.API.Models;
-using Alura.WebAPI.AuthProvider.Models;
+using Alura.WebAPI.DAL.Livros;
 using Alura.WebAPI.Model;
+using Alura.WebAPI.Seguranca;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -24,8 +23,6 @@ namespace Alura.WebAPI.API
             Configuration = config;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<LeituraContext>(options =>

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Alura.WebAPI.API.Data
+namespace Alura.WebAPI.DAL.Livros
 {
     internal class LivroConfiguration : IEntityTypeConfiguration<Livro>
     {

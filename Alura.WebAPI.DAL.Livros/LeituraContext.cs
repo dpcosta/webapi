@@ -1,8 +1,7 @@
 ﻿using Alura.WebAPI.Model;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alura.WebAPI.API.Data
+namespace Alura.WebAPI.DAL.Livros
 {
     public class LeituraContext : DbContext
     {
