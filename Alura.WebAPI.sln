@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.WebAPI.DAL.Usuarios",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.WebAPI.ConsoleApp", "Alura.WebAPI.ConsoleApp\Alura.WebAPI.ConsoleApp.csproj", "{8ABE5AA8-CEB1-4EC4-8A29-09AB4CCFB400}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.WebAPI.Services", "Alura.WebAPI.Services\Alura.WebAPI.Services.csproj", "{5639B140-3705-45FB-B1F1-212BD7034023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alura.WebAPI.Services", "Alura.WebAPI.Services\Alura.WebAPI.Services.csproj", "{5639B140-3705-45FB-B1F1-212BD7034023}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.WebAPI.WinFormsApp", "Alura.WebAPI.WinFormsApp\Alura.WebAPI.WinFormsApp.csproj", "{9053605D-8703-44E7-8F23-00D738888B72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura.WebAPI.WebAppTradicional", "Alura.WebAPI.WebAppTradicional\Alura.WebAPI.WebAppTradicional.csproj", "{3CC9784F-82C5-4999-BE83-7C4A2B96835D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{9053605D-8703-44E7-8F23-00D738888B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9053605D-8703-44E7-8F23-00D738888B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9053605D-8703-44E7-8F23-00D738888B72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CC9784F-82C5-4999-BE83-7C4A2B96835D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC9784F-82C5-4999-BE83-7C4A2B96835D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC9784F-82C5-4999-BE83-7C4A2B96835D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC9784F-82C5-4999-BE83-7C4A2B96835D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{8ABE5AA8-CEB1-4EC4-8A29-09AB4CCFB400} = {04192D6B-5E39-46C6-A7AB-1B79360192CE}
 		{5639B140-3705-45FB-B1F1-212BD7034023} = {58B6C847-CC64-4D78-B854-57E826A5BE62}
 		{9053605D-8703-44E7-8F23-00D738888B72} = {04192D6B-5E39-46C6-A7AB-1B79360192CE}
+		{3CC9784F-82C5-4999-BE83-7C4A2B96835D} = {04192D6B-5E39-46C6-A7AB-1B79360192CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27AF3585-B804-4D4A-9C5B-5667BF413334}

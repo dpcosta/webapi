@@ -20,12 +20,12 @@ namespace Alura.WebAPI.WebApp.Controllers
         [HttpGet]
         public IActionResult Novo()
         {
-            return View(new LivroViewModel());
+            return View(new LivroUpload());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Novo(LivroViewModel model)
+        public async Task<IActionResult> Novo(LivroUpload model)
         {
             if (ModelState.IsValid)
             {
@@ -59,14 +59,10 @@ namespace Alura.WebAPI.WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Detalhes(LivroViewModel model)
+        public async Task<IActionResult> Detalhes(LivroUpload model)
         {
             if (ModelState.IsValid)
             {
-                if (model.Capa == null)
-                {
-                    //considero que não houve mudanças
-                }
                 await _service.AtualizaLivroAsync(model.ToLivro());
                 return RedirectToAction("Index", "Home");
             }

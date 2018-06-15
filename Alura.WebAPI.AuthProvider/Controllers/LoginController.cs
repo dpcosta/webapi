@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using Alura.WebAPI.AuthProvider.Models;
+using Alura.WebAPI.DAL.Usuarios;
 using Alura.WebAPI.Model;
 using Alura.WebAPI.Seguranca;
 using Microsoft.AspNetCore.Authorization;

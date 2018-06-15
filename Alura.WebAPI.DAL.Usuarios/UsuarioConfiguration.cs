@@ -1,5 +1,4 @@
-﻿using Alura.WebAPI.AuthProvider.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Alura.WebAPI.DAL.Usuarios

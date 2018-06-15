@@ -1,5 +1,4 @@
 ﻿using System;
-using Alura.WebAPI.AuthProvider.Models;
 using Alura.WebAPI.DAL.Usuarios;
 using Alura.WebAPI.Seguranca;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

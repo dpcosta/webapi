@@ -1,5 +1,4 @@
-﻿using Alura.WebAPI.AuthProvider.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Alura.WebAPI.DAL.Usuarios

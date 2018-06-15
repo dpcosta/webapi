@@ -49,5 +49,18 @@ namespace Alura.WebAPI.Model
                 Lista = livro.Lista.ParaString()
             };
         }
+
+        public static LivroUpload ToModel(this Livro livro)
+        {
+            return new LivroUpload
+            {
+                Id = livro.Id,
+                Titulo = livro.Titulo,
+                Subtitulo = livro.Subtitulo,
+                Resumo = livro.Resumo,
+                Autor = livro.Autor,
+                Lista = livro.Lista
+            };
+        }
     }
 }
