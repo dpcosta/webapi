@@ -31,5 +31,16 @@ namespace Alura.WebAPI.API.Controllers
             }
             return File("~/images/capas/capa-vazia.png", "image/png");
         }
+
+        //[AllowAnonymous]
+        [HttpPost("{livroId}")]
+        public IActionResult Post(int livroId)
+        {
+            if (livroId == 123)
+            {
+                throw new System.Exception("Teste de tratamento de erros na API...");
+            }
+            return Ok(livroId);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Alura.WebAPI.API.Filters;
 using Alura.WebAPI.DAL.Livros;
 using Alura.WebAPI.Model;
 using Alura.WebAPI.Seguranca;
@@ -79,6 +80,8 @@ namespace Alura.WebAPI.API
             });
 
             services.AddMvc(options => {
+                //registrando o filtro globalmente...
+                options.Filters.Add(new ApiExceptionHandler());
                 //impede que o cliente envie media types diferentes do aceitável
                 //exemplo: text/css irá retornar 406
                 options.ReturnHttpNotAcceptable = true;
