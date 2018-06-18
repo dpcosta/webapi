@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Alura.WebAPI.API
 {
@@ -89,6 +90,10 @@ namespace Alura.WebAPI.API
                 options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
                 //e se eu quisesse serializar em um formato novo? Ex. CSV
             });
+
+            services.AddSwaggerGen(cfg => {
+                cfg.SwaggerDoc("v1", new Info { Title = "API Alura Lista de Leitura", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,6 +103,12 @@ namespace Alura.WebAPI.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(cfg => {
+                cfg.SwaggerEndpoint("/swagger/v1/swagger.json", "API Alura Lista de Leitura");
+            });
 
             app.UseStaticFiles();
 
