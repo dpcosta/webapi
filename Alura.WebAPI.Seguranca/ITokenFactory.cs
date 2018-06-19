@@ -1,4 +1,4 @@
-﻿namespace Alura.WebAPI.Seguranca
+﻿namespace Alura.ListaLeitura.Seguranca
 {
     public interface ITokenFactory
     {

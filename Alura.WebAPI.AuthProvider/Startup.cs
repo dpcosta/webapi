@@ -1,6 +1,5 @@
 ﻿using System;
-using Alura.WebAPI.DAL.Usuarios;
-using Alura.WebAPI.Seguranca;
+using Alura.ListaLeitura.Seguranca;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -11,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Alura.WebAPI.AuthProvider
+namespace Alura.ListaLeitura.Api.Usuarios
 {
     public class Startup
     {

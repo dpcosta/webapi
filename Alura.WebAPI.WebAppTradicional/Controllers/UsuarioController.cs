@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Alura.WebAPI.DAL.Usuarios;
-using Alura.WebAPI.Seguranca;
-using Alura.WebAPI.WebAppTradicional.Models;
+using Alura.ListaLeitura.Seguranca;
+using Alura.ListaLeitura.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alura.WebAPI.WebApp.Controllers
+namespace Alura.ListaLeitura.WebApp.Controllers
 {
     public class UsuarioController : Controller
     {

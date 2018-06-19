@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Alura.WebAPI.Model;
-using Alura.WebAPI.Seguranca;
-using Alura.WebAPI.Services;
+using Alura.ListaLeitura.Seguranca;
+using Alura.ListaLeitura.Servicos;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;

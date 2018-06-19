@@ -3,15 +3,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using Alura.WebAPI.DAL.Usuarios;
-using Alura.WebAPI.Model;
-using Alura.WebAPI.Seguranca;
+using Alura.ListaLeitura.Seguranca;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Alura.WebAPI.AuthProvider.Controllers
+namespace Alura.ListaLeitura.Api.Usuarios
 {
     [Route("api/[controller]")]
     public class LoginController : Controller

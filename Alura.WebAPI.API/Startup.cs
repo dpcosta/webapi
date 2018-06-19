@@ -1,8 +1,7 @@
 ﻿using System;
-using Alura.WebAPI.API.Filters;
-using Alura.WebAPI.DAL.Livros;
-using Alura.WebAPI.Model;
-using Alura.WebAPI.Seguranca;
+using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Persistencia;
+using Alura.ListaLeitura.Seguranca;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -14,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Alura.WebAPI.API
+namespace Alura.ListaLeitura.Api.Livros
 {
     public class Startup
     {

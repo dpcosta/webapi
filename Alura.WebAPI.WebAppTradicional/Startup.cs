@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alura.WebAPI.DAL.Livros;
-using Alura.WebAPI.DAL.Usuarios;
-using Alura.WebAPI.Model;
+﻿using Alura.ListaLeitura.Persistencia;
+using Alura.ListaLeitura.Seguranca;
+using Alura.ListaLeitura.Modelos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Alura.WebAPI.WebAppTradicional
+namespace Alura.ListaLeitura.WebApp
 {
     public class Startup
     {

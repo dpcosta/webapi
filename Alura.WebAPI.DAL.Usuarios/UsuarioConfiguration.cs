@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Alura.WebAPI.DAL.Usuarios
+namespace Alura.ListaLeitura.Seguranca
 {
     internal class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
     {

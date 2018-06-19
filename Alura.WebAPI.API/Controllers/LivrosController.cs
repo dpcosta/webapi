@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Linq;
-using Alura.WebAPI.DAL.Livros;
-using Alura.WebAPI.Model;
+using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Persistencia;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alura.WebAPI.WebApp.API
+namespace Alura.ListaLeitura.Api.Livros
 {
     [Authorize("Bearer")]
     [Route("api/[controller]")]

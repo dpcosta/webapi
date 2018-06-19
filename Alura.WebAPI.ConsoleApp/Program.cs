@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Alura.WebAPI.Model;
-using Alura.WebAPI.Seguranca;
-using Alura.WebAPI.Services;
+using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Seguranca;
+using Alura.ListaLeitura.Servicos;
 
-namespace Alura.WebAPI.ConsoleApp
+namespace Alura.ListaLeitura.ConsoleApp
 {
     class TokenViaString : ITokenFactory
     {

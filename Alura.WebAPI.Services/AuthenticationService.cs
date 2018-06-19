@@ -1,10 +1,10 @@
-﻿using Alura.WebAPI.Seguranca;
+﻿using Alura.ListaLeitura.Seguranca;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.Services
+namespace Alura.ListaLeitura.Servicos
 {
     public class TokenResult
     {

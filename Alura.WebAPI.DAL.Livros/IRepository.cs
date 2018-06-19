@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
-namespace Alura.WebAPI.DAL.Livros
+namespace Alura.ListaLeitura.Persistencia
 {
     public interface IRepository<TEntity> where TEntity : class
     {

@@ -1,7 +1,7 @@
-﻿using Alura.WebAPI.Model;
+﻿using Alura.ListaLeitura.Modelos;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alura.WebAPI.DAL.Livros
+namespace Alura.ListaLeitura.Persistencia
 {
     public class LeituraContext : DbContext
     {

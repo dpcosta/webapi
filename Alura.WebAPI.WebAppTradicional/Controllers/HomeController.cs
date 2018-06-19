@@ -1,12 +1,12 @@
-﻿using Alura.WebAPI.DAL.Livros;
-using Alura.WebAPI.Model;
-using Alura.WebAPI.WebAppTradicional.Models;
+﻿using Alura.ListaLeitura.Persistencia;
+using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Alura.WebAPI.WebApp.Controllers
+namespace Alura.ListaLeitura.WebApp.Controllers
 {
     [Authorize]
     public class HomeController : Controller

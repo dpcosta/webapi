@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Alura.WebAPI.WebAppTradicional.Models
+namespace Alura.ListaLeitura.WebApp.Models
 {
     public class RegisterViewModel
     {

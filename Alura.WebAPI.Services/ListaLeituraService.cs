@@ -1,11 +1,11 @@
-﻿using Alura.WebAPI.Model;
-using Alura.WebAPI.Seguranca;
+﻿using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Seguranca;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.Services
+namespace Alura.ListaLeitura.Servicos
 {
     public class ListaLeituraService
     {
@@ -32,7 +32,7 @@ namespace Alura.WebAPI.Services
             //{
             //    throw new ListaLeituraUnauthorizedException();
             //}
-            var lista = await response.Content.ReadAsAsync<ListaLeitura>();
+            var lista = await response.Content.ReadAsAsync<Modelos.ListaLeitura>();
             return lista.Livros;
         }
     }

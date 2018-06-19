@@ -1,4 +1,5 @@
-﻿using Alura.WebAPI.Services;
+﻿using Alura.ListaLeitura.Servicos;
+using Alura.ListaLeitura.Seguranca;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,10 +8,9 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using System;
-using Alura.WebAPI.Seguranca;
 using Alura.WebAPI.WebApp.Seguranca;
 
-namespace Alura.WebAPI.WebApp
+namespace Alura.ListaLeitura.WebApp
 {
     public class Startup
     {

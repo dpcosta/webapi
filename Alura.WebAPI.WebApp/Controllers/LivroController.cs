@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Alura.WebAPI.Model;
-using Alura.WebAPI.WebApp.Models;
-using Alura.WebAPI.Services;
+using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Servicos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

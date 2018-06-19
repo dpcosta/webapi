@@ -1,12 +1,12 @@
-﻿using Alura.WebAPI.Model;
-using Alura.WebAPI.WebApp.Models;
-using Alura.WebAPI.Services;
+﻿using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Servicos;
+using Alura.ListaLeitura.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.WebApp.Controllers
+namespace Alura.ListaLeitura.WebApp.Controllers
 {
     [Authorize]
     public class HomeController : Controller

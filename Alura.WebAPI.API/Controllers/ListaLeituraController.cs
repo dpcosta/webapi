@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Alura.WebAPI.DAL.Livros;
-using Alura.WebAPI.Model;
+using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Persistencia;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alura.WebAPI.API.Controllers
+namespace Alura.ListaLeitura.Api.Livros
 {
     [Authorize("Bearer")]
     [Route("api/[controller]")]
@@ -27,9 +27,9 @@ namespace Alura.WebAPI.API.Controllers
                 .ToList();
         }
 
-        private ListaLeitura CreateFor(TipoListaLeitura tipo)
+        private Modelos.ListaLeitura CreateFor(TipoListaLeitura tipo)
         {
-            return new ListaLeitura
+            return new Modelos.ListaLeitura
             {
                 Tipo = tipo.ParaString(),
                 Livros = LivrosDoTipo(tipo)
@@ -42,13 +42,13 @@ namespace Alura.WebAPI.API.Controllers
             var paraLer = CreateFor(TipoListaLeitura.ParaLer);
             var lendo = CreateFor(TipoListaLeitura.Lendo);
             var lidos = CreateFor(TipoListaLeitura.Lidos);
-            return Ok(new List<ListaLeitura> { paraLer, lendo, lidos });
+            return Ok(new List<Modelos.ListaLeitura> { paraLer, lendo, lidos });
         }
 
         [HttpGet("{tipo}")]
         public IActionResult Get(TipoListaLeitura tipo)
         {
-            var lista = new ListaLeitura
+            var lista = new Modelos.ListaLeitura
             {
                 Tipo = tipo.ParaString(),
                 Livros = LivrosDoTipo(tipo)

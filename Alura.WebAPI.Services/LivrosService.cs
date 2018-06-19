@@ -1,12 +1,12 @@
-﻿using Alura.WebAPI.Model;
-using Alura.WebAPI.Seguranca;
+﻿using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Alura.WebAPI.Services
+namespace Alura.ListaLeitura.Servicos
 {
     public class LivrosService
     {

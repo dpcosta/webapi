@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Alura.WebAPI.WinFormsApp
+namespace Alura.ListaLeitura.WinFormsApp
 {
     class Livro
     {

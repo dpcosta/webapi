@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alura.WebAPI.Seguranca;
+﻿using System.Linq;
+using Alura.ListaLeitura.Seguranca;
 using Microsoft.AspNetCore.Http;
 
 namespace Alura.WebAPI.WebApp.Seguranca

@@ -1,4 +1,4 @@
-﻿namespace Alura.WebAPI.WinFormsApp
+﻿namespace Alura.ListaLeitura.WinFormsApp
 {
     partial class MainForm
     {

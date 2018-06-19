@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alura.WebAPI.DAL.Livros;
-using Alura.WebAPI.Model;
+﻿using System.Linq;
+using Alura.ListaLeitura.Persistencia;
+using Alura.ListaLeitura.Modelos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alura.WebAPI.WebAppTradicional.Controllers
+namespace Alura.ListaLeitura.WebApp.Controllers
 {
     [Authorize]
     public class LivroController : Controller

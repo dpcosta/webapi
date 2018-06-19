@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
 
-namespace Alura.WebAPI.DAL.Usuarios
+namespace Alura.ListaLeitura.Seguranca
 {
     public class Usuario : IdentityUser
     {
